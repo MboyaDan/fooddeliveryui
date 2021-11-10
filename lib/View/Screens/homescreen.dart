@@ -1,3 +1,5 @@
+import 'package:complexui/View/Screens/popularbrands.dart';
+import 'package:complexui/View/widgets/carouselslider.dart';
 import 'package:complexui/View/widgets/pallete.dart';
 import 'package:complexui/View/widgets/textinput.dart';
 import 'package:flutter/material.dart';
@@ -11,85 +13,129 @@ class Homescreen extends StatefulWidget {
 }
 
 class _HomescreenState extends State<Homescreen> {
+  int _currentTab = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-            child: ListView(
-      padding: const EdgeInsets.symmetric(vertical: 30.0),
-      children: <Widget>[
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: SafeArea(
+        child: ListView(
+          padding: const EdgeInsets.symmetric(vertical: 30.0),
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(left: 20.0),
-              child: Column(
-                children: const <Widget>[
-                  Text(
-                    'see All',
-                    style: TextStyle(
-                      color: kMaroon,
-                      fontSize: 22.0,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1.5,
-                    ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: Column(
+                    children: const <Widget>[
+                      Text(
+                        'see All',
+                        style: TextStyle(
+                          color: kMaroon,
+                          fontSize: 22.0,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 1.5,
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Text(
+                        'Rishabh',
+                        style: TextStyle(
+                          color: kGrey,
+                          fontSize: 22.0,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 1.5,
+                        ),
+                      )
+                    ],
                   ),
-                  SizedBox(height: 20),
-                  Text(
-                    'Rishabh',
-                    style: TextStyle(
-                      color: kGrey,
-                      fontSize: 22.0,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1.5,
-                    ),
-                  )
-                ],
-              ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 20.0),
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.circular(15.0),
+                      child: const Image(
+                        height: 60.0,
+                        width: 60.0,
+                        image: AssetImage('assets/images/hotel1.jpg'),
+                        fit: BoxFit.cover,
+                      )),
+                )
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 20.0),
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(15.0),
-                  child: const Image(
-                    height: 60.0,
-                    width: 60.0,
-                    image: AssetImage('assets/images/hotel1.jpg'),
-                    fit: BoxFit.cover,
-                  )),
-            )
-          ],
-        ),
-        const SizedBox(height: 20.0),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
+            const SizedBox(height: 20.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                const Padding(
+                  padding: EdgeInsets.only(left: 20.0),
+                  child: TextInputField(
+                    icon: FontAwesomeIcons.search,
+                    hint: 'Dish,Cuisines,Restaurant',
+                    inputAction: TextInputAction.done,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 20.0),
+                  child: Container(
+                      alignment: Alignment.center,
+                      child: IconButton(
+                        onPressed: () => Navigator.pop(context),
+                        icon: const Icon(FontAwesomeIcons.sortAmountDown),
+                        iconSize: 25.0,
+                        color: Colors.white,
+                      ),
+                      width: 60.0,
+                      height: 60.0,
+                      decoration: BoxDecoration(
+                          color: kGrey,
+                          borderRadius: BorderRadius.circular(15.0))),
+                )
+              ],
+            ),
+            const SizedBox(height: 20),
             const Padding(
               padding: EdgeInsets.only(left: 20.0),
-              child: TextInputField(
-                icon: FontAwesomeIcons.search,
-                hint: 'Dish,Cuisines,Restaurant',
-                inputAction: TextInputAction.done,
-              ),
+              child: Text('Popular Brands',
+                  style: TextStyle(
+                    color: kGrey,
+                    fontSize: 22.0,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1.5,
+                  )),
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 20.0),
-              child: Container(
-                  alignment: Alignment.center,
-                  child: IconButton(
-                    onPressed: () => Navigator.pop(context),
-                    icon: const Icon(FontAwesomeIcons.sortAmountDown),
-                    iconSize: 25.0,
-                    color: Colors.white,
-                  ),
-                  width: 60.0,
-                  height: 60.0,
-                  decoration: BoxDecoration(
-                      color: kGrey, borderRadius: BorderRadius.circular(15.0))),
-            )
+            const SizedBox(height: 10),
+            const Popularbrands(),
+            const SizedBox(height: 10),
+            const Carouselsliders(
+              carouselList: [],
+            ),
           ],
         ),
-      ],
-    )));
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            label: 'Profile',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag),
+            label: 'Shop',
+          ),
+        ],
+        currentIndex: _currentTab,
+        onTap: (int value) {
+          setState(() {
+            _currentTab = value;
+          });
+        },
+      ),
+    );
   }
 }
