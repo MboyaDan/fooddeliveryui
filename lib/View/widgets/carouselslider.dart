@@ -45,6 +45,10 @@ class _CarouselslidersState extends State<Carouselsliders> {
                     shape: BoxShape.circle,
                     color: Color.fromRGBO(0, 0, 0, 0.4),
                   ),
+                  child: Image.network(
+                    imgUrl,
+                    fit: BoxFit.fill,
+                  ),
                 );
               },
             );
