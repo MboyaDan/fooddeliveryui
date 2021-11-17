@@ -109,6 +109,12 @@ class _HomescreenState extends State<Homescreen> {
             const Popularbrands(),
             const SizedBox(height: 10),
             const Carouselsliders(),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: const <Widget>[],
+            )
           ],
         ),
       ),
