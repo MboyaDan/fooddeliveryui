@@ -17,9 +17,9 @@ class Popularbrands extends StatelessWidget {
           children: <Widget>[
             ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: activities.length,
+                itemCount: products.length,
                 itemBuilder: (BuildContext context, int index) {
-                  Activity activity = activities[index];
+                  Product product = products[index];
                   return Container(
                     margin: const EdgeInsets.all(10.0),
                     width: 100.0,
@@ -38,7 +38,7 @@ class Popularbrands extends StatelessWidget {
                         child: Image(
                           height: 30.0,
                           width: 30.0,
-                          image: AssetImage(activity.imageUrl),
+                          image: AssetImage(product.imageUrl),
                           fit: BoxFit.cover,
                         )),
                   );

@@ -1,4 +1,5 @@
 import 'package:complexui/View/Screens/popularbrands.dart';
+import 'package:complexui/View/Screens/products.dart';
 import 'package:complexui/View/widgets/carouselslider.dart';
 import 'package:complexui/View/widgets/pallete.dart';
 import 'package:complexui/View/widgets/textinput.dart';
@@ -109,12 +110,8 @@ class _HomescreenState extends State<Homescreen> {
             const Popularbrands(),
             const SizedBox(height: 10),
             const Carouselsliders(),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: const <Widget>[],
-            )
+            const SizedBox(height: 20),
+            const Products(),
           ],
         ),
       ),
